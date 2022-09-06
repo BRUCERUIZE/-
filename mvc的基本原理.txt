@@ -1,0 +1,37 @@
+handlermapping+handlerexecution适配请求
+DispatcherServlet调用HandlerMapping,HandlerMapping根据请求url查找Handler。
+HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。
+
+handleradapter+controller请求到底要做什么
+HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等。
+HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler。
+Handler让具体的Controller执行。
+
+controller层是连接前端和后端的，接受前端发来的请求，同时向后端发送请求，
+——>service 层
+——>serviceImpl实现service层,同时连接dao层，（在dao层中同样是接口）
+——>通过dao层去实现对数据库的操作——在XML文件中通过namespace完成连接dao层。
+
+Controller将具体的从数据库拿出来的信息返回给HandlerAdapter,如ModelAndView。
+HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet。
+
+DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名。
+
+view+viewresolver 视图解析 渲染数据，呈现给用户看
+
+视图解析器将解析的逻辑视图名传给DispatcherServlet。
+DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。
+最终视图呈现给用户。
+
+真正要做的：写一个controller层去掉业务层，
+	     设置视图返回的名字，将模型放到视图里渲染并将最终视图呈现给用户
+
+
+
+
+
+
+
+
+
+	    
